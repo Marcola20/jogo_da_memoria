@@ -1,6 +1,7 @@
 const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
+const plays = document.querySelector('.counter-plays');
 
 const characters = [
     'percy',
@@ -30,7 +31,7 @@ checkEndGame = () => {
     const disabledCard = document.querySelectorAll('.disabled-card');
     if(disabledCard.length === 20){
         clearInterval(this.loop);
-        alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de ${timer.innerHTML} segundos.`);
+        alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de ${timer.innerHTML} segundos com ${plays.innerHTML} jogadas.`);
     }
 }
 
@@ -40,6 +41,7 @@ const checkCards = () => {
 
     // Caso acerte deixa o card virado com a parte da frente
     if (firstCharacter === secondCharacter){
+        counterPlays();
         firstCard.firstChild.classList.add('disabled-card');
         secondCard.firstChild.classList.add('disabled-card');
 
@@ -49,12 +51,14 @@ const checkCards = () => {
         checkEndGame();
     // Caso erre vira as cartas de volta
     }else{
+        counterPlays();
         setTimeout(() => {
             firstCard.classList.remove('reveal-card');
             secondCard.classList.remove('reveal-card');
 
             firstCard = '';
-            secondCard = '';
+            secondCard = ''
+
         }, 500);
 
     }
@@ -77,7 +81,6 @@ const revealCard = ({ target }) => {
     }
 
 }
-
 
 // CRIANDO OS CARDS
 const createCard = (character) => {
@@ -122,9 +125,18 @@ const startTimer = () => {
 
 }
 
+const counterPlays = () => {
+    const counterPlays = +plays.innerHTML;
+    plays.innerHTML = counterPlays + 1;
+}
+
 window.onload = () => {
     spanPlayer.innerHTML = localStorage.getItem('player');
     startTimer();
     loadGame();
 }
 
+const btn = document.querySelector("#refresh");
+btn.addEventListener("click", function() {
+    location.reload();
+});

@@ -1,13 +1,41 @@
-main{
-    display: flex;
-    flex-direction: column;
+.mae{
     width: 100%;
     background-image: url('../imagens/bg.png');
     background-size: cover;
     min-height: 10vh;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 10vh;
     align-items: center;
     justify-content: center;
-    padding: 20px 20px 50px;
+    padding: 20px 20px 10px;
+}
+
+.end{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
+
+#refresh{
+    background-color: rgba(63, 53, 96, 0.8);
+    color: #fff;
+    padding: 15px;
+    border: #3f3560 solid;
+    font-size: 1em;
+}
+
+#init{
+    background-color: rgba(63, 53, 96, 0.8);
+    color: #fff;
+    padding: 15px;
+    border: #3f3560 solid;
+    font-size: 1em;
 }
 
 header{

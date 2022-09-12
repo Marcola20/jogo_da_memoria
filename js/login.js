@@ -5,7 +5,7 @@ const form = document.querySelector('.login-form');
 
 // HABILITAR e DESABILITAR BOTÃO "PLAY"
 const validateInput = ({target}) => {
-    if (target.value.length > 3 ){
+    if (target.value.length > 2 ){
         button.removeAttribute('disabled');
     }else{
         button.setAttribute('disabled', '')
